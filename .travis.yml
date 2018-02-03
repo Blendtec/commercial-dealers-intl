@@ -28,11 +28,11 @@ script:
 - npm run test:ci
 - echo $TRAVIS_BRANCH
 - if [ $TRAVIS_BRANCH = 'master' ]; then
-    npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_BUCKET/$APP_NAME/"
+    console.log('master');
   elif [ $TRAVIS_BRANCH = 'staging' ]; then
-    npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_STAGE_BUCKET/$APP_NAME/"
+    console.log('staging');
   else
-    npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_DEV_BUCKET/$APP_NAME/"
+    console.log('develop');
   fi
 after_success:
 - "./node_modules/.bin/codecov"
