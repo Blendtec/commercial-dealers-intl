@@ -27,9 +27,9 @@ before_script:
 script:
 - npm run test:ci
 - echo $TRAVIS_BRANCH
-- if [ $TRAVIS_BRANCH = 'master' ]; then echo 'MASTER'; fi
-- if [ $TRAVIS_BRANCH = 'staging' ]; then echo 'STAGING'; fi
-- if [ $TRAVIS_BRANCH = 'develop' ]; then echo 'DEVELOP'; fi
+- if [ $TRAVIS_BRANCH = 'master' ]; then npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_BUCKET/$APP_NAME/; fi
+  if [ $TRAVIS_BRANCH = 'staging' ]; then npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_STAGE_BUCKET/$APP_NAME/; fi
+  if [ $TRAVIS_BRANCH = 'staging' ]; then npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_REGION/$S3_DEV_BUCKET/$APP_NAME/; fi
 after_success:
 - "./node_modules/.bin/codecov"
 deploy:
@@ -82,6 +82,6 @@ deploy:
     branch: develop
 - provider: script
   skip_cleanup: true
-  script: node ./.travis/shopify.js $SHOPIFY_DEV_SHOP $SHOPIFY_DEV_API_KEY $SHOPIFY_DEV_API_PASSWORD $SHOPIFY_DEV_PAGE_ID
+  script: "node ./.travis/shopify.js $SHOPIFY_DEV_SHOP $SHOPIFY_DEV_API_KEY $SHOPIFY_DEV_API_PASSWORD $SHOPIFY_DEV_PAGE_ID"
   on:
     branch: develop
