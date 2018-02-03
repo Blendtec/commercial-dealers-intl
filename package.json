@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "e2e": "ng e2e",
-    "build:ci": "npm run env && ng build --aot --prod --deploy-url",
+    "build:ci": "npm run env && ng build --aot --prod --base-href /pages/$APP_NAME --deploy-url $S3_STAGE_REGION/$S3_STAGE_BUCKET/$APP_NAME/",
+    "build:cistage": "npm run env && ng build --aot --prod --base-href /pages/${process.env.APP_NAME} --deploy-url",
     "test:ci": "npm run lint && ng test --single-run --code-coverage"
   },
   "private": true,
@@ -36,6 +37,7 @@
     "@types/node": "~6.0.60",
     "codecov": "^2.2.0",
     "codelyzer": "^4.0.2",
+    "cross-var": "^1.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
