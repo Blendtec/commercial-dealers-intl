@@ -68,12 +68,13 @@ deploy:
   script: "node ./.travis/shopify.js $SHOPIFY_STAGE_SHOP $SHOPIFY_STAGE_API_KEY $SHOPIFY_STAGE_API_PASSWORD $SHOPIFY_STAGE_PAGE_ID"
   on:
     branch: stage
+
 - provider: s3
   region: us-west-1
   access_key_id: $AMAZON_ACCESS_KEY_ID
   secret_access_key:
     secure: $AMAZON_SECRET_ACCESS_KEY
-  bucket: $S3_STAGE_BUCKET
+  bucket: $S3_DEV_BUCKET
   local-dir: dist
   upload-dir: $APP_NAME
   skip_cleanup: true
