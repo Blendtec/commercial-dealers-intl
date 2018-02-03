@@ -13,7 +13,7 @@ var indexPagePath = path.join(__dirname, "..", "dist", "index.html");
 fs.readFile(indexPagePath, "utf-8", function (err, data) {
     if (!err) {
         data = "<script> window.imageStorage = '"+process.argv[2]+"'; window.liveSite = true; </script>" + data;
-        data = data.replace(/<base\shref=[^>]*>/gi, '<base href="/pages/become-a-dealer"/>');
+        data = data.replace(/<base\shref=[^>]*>/gi, '<base href="/pages/dealers-commercial-intl"/>');
         var put_data = {
             page: {
                 body_html: data
