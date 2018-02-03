@@ -82,6 +82,6 @@ deploy:
     branch: develop
 - provider: script
   skip_cleanup: true
-  script: "node ./.travis/shopify.js $SHOPIFY_DEV_SHOP $SHOPIFY_DEV_API_KEY $SHOPIFY_DEV_API_PASSWORD $SHOPIFY_DEV_PAGE_ID"
+  script: node ./.travis/shopify.js $SHOPIFY_DEV_SHOP $SHOPIFY_DEV_API_KEY $SHOPIFY_DEV_API_PASSWORD $SHOPIFY_DEV_PAGE_ID
   on:
     branch: develop
