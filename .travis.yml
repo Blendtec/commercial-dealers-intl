@@ -27,13 +27,9 @@ before_script:
 script:
 - npm run test:ci
 - echo $TRAVIS_BRANCH
-- if [ $TRAVIS_BRANCH = 'master' ]; then
-    echo 'MASTER'
-  elif [ $TRAVIS_BRANCH = 'staging' ]; then
-    echo 'STAGING'
-  else
-    echo 'DEVELOP'
-  fi
+- if [ $TRAVIS_BRANCH = 'master' ]; then echo 'MASTER'; fi
+- if [ $TRAVIS_BRANCH = 'staging' ]; then echo 'STAGING'; fi
+- if [ $TRAVIS_BRANCH = 'develop' ]; then echo 'DEVELOP'; fi
 after_success:
 - "./node_modules/.bin/codecov"
 deploy:
