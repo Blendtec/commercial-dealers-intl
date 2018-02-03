@@ -10,7 +10,7 @@ describe('DealerService', () => {
 
   let service: DealerService;
   let httpMock: HttpTestingController;
-  let dealers: IDealer[] = [
+  const dealers: IDealer[] = [
     {
       id: '56f0175f-0058-46c3-97d7-40eb42cbcf71',
       country_code: 'RS',
